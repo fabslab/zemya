@@ -1,0 +1,100 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://assets/soldier1_gun.png" type="Texture" id=2]
+[ext_resource path="res://assets/crosshairs.png" type="Texture" id=3]
+[ext_resource path="res://Wall.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 22.0227
+
+[node name="BounceandCollide" type="Node" index="0"]
+
+[node name="Player" type="Node2D" parent="." index="0"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="PlayerCharacter" type="KinematicBody2D" parent="Player" index="0"]
+
+editor/display_folded = true
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Player/PlayerCharacter" index="0"]
+
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/PlayerCharacter" index="1"]
+
+position = Vector2( -5, 0 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Muzzle" type="Position2D" parent="Player/PlayerCharacter" index="2"]
+
+position = Vector2( 28, 8 )
+_sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
+
+[node name="Crosshairs" type="Sprite" parent="Player" index="1"]
+
+texture = ExtResource( 3 )
+
+[node name="Camera2D" type="Camera2D" parent="Player" index="2"]
+
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false
+smoothing_enabled = true
+smoothing_speed = 8.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Drag Margin", "Smoothing" ]
+
+[node name="Walls" type="Node" parent="." index="1"]
+
+editor/display_folded = true
+
+[node name="Wall" parent="Walls" index="0" instance=ExtResource( 4 )]
+
+position = Vector2( 407.211, 718.652 )
+
+[node name="Wall2" parent="Walls" index="1" instance=ExtResource( 4 )]
+
+position = Vector2( 773.514, -82.3147 )
+
+[node name="Wall3" parent="Walls" index="2" instance=ExtResource( 4 )]
+
+position = Vector2( 1258.93, 348.159 )
+rotation = 1.5708
+
+[node name="Wall4" parent="Walls" index="3" instance=ExtResource( 4 )]
+
+position = Vector2( 84.2131, 281.193 )
+rotation = 1.5708
+
+
