@@ -9,7 +9,7 @@ var mouse_sensitivity = 1
 var mouse_movement = Vector2()
 var camera_look_offset_distance = 40 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	move_player()
 	aim_player()
 
